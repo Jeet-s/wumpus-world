@@ -78,164 +78,32 @@ function setPosition(){
 
     if (monster.position == 3 || monster.position == 7 || monster.position == 11 || monster.position == 15) {
         stench[2].position = 100;
-        console.log("running")
     }
     
     if (monster.position == 0 || monster.position == 4 || monster.position == 8 || monster.position == 12) {
         stench[3].position = 100;
-        console.log("running2")
     }
 
     if (gold.position == 3 || gold.position == 7 || gold.position == 11 || gold.position == 15) {
         shine[2].position = 100;
-        console.log("running")
     }
     
     if (gold.position == 0 || gold.position == 4 || gold.position == 8 || gold.position == 12) {
         shine[3].position = 100;
-        console.log("running2")
     }
 }
 setPosition();
-// const pit1 = {
-//     name: "pit1",
-//     position: Math.ceil(Math.random() * 15)
-// };
-// const wind1 = [{
-//         name: "wind1Top",
-//         position: pit1.position + 4
-//     },
-//     {
-//         name: "wind1Bottom",
-//         position: pit1.position - 4
-//     },
-//     {
-//         name: "wind1Right",
-//         position: pit1.position + 1
-//     },
-//     {
-//         name: "wind1Left",
-//         position: pit1.position - 1
-//     }
-// ];
-
-// if (pit1.position == 3 || pit1.position == 7 || pit1.position == 11 || pit1.position == 15) {
-//     wind1[2].position = 100;
-//     console.log("running")
-// }
-
-// if (pit1.position == 0 || pit1.position == 4 || pit1.position == 8 || pit1.position == 12) {
-//     wind1[3].position = 100;
-//     console.log("running2")
-// }
-
-// if (pit1.position === gold.position || pit1.position === monster.position) {
-//     if (pit1.position === 15) {
-//         pit1.position -= 1;
-//     } else {
-//         pit1.position += 1;
-//     }
-
-// }
-
-// const pit2 = {
-//     name: "pit2",
-//     position: Math.ceil(Math.random() * 15)
-// };
-// const wind2 = [{
-//         name: "wind2Top",
-//         position: pit2.position + 4
-//     },
-//     {
-//         name: "wind2Bottom",
-//         position: pit2.position - 4
-//     },
-//     {
-//         name: "wind2Right",
-//         position: pit2.position + 1
-//     },
-//     {
-//         name: "wind2Left",
-//         position: pit2.position - 1
-//     }
-// ];
-
-// if (pit2.position == 3 || pit2.position == 7 || pit2.position == 11 || pit2.position == 15) {
-//     wind2[2].position = 100;
-//     console.log("running")
-// }
-
-// if (pit2.position == 0 || pit2.position == 4 || pit2.position == 8 || pit2.position == 12) {
-//     wind2[3].position = 100;
-//     console.log("running2")
-// }
-
-// if (pit2.position === gold.position || pit2.position === monster.position || pit2.position === pit1.position) {
-//     if (pit2.position === 15) {
-//         pit2.position -= 1;
-//     } else {
-//         pit2.position += 1;
-//     }
-
-// }
-
-// console.log(stench[0]);
-// console.log(stench[1]);
-// console.log(stench[2]);
-// console.log(stench[3]);
-// console.log(stench);
-// console.log(monster);
 
 if (monster.position === player.position) {
-    console.log("GAME OVER");
     $(".status-outside").css("display", "block");
     $(".status").css("display", "block");
     $(".lost").css("display", "block");
 }
 if (gold.position === player.position) {
-    console.log("YOU WON");
     $(".status-outside").css("display", "block");
     $(".status").css("display", "block");
     $(".win").css("display", "block");
 }
-// if (pit1.position === player.position || pit2.position === player.position) {
-//     console.log("START AGAIN");
-//     player.position = 0;
-//     if (score >= 20) {
-//         score -= 20;
-//     } else {
-//         score = 0;
-//     }
-
-//     $("#score h2").text(score);
-// }
-
-
-
-for (var s = 0; s < stench.length; s++) {
-
-    if (stench[s].position === player.position) {
-        console.log("player is on stench");
-    }
-}
-for (var s = 0; s < shine.length; s++) {
-
-    if (shine[s].position === player.position) {
-        console.log("player is on shine");
-    }
-}
-// for (var s = 0; s < wind1.length; s++) {
-
-//     if (wind1[s].position === player.position) {
-//         console.log("player is on wind");
-//     }
-// }
-// for (var s = 0; s < wind2.length; s++) {
-
-//     if (wind2[s].position === player.position) {
-//         console.log("player is on wind");
-//     }
-// }
 
 $(document).ready(function () {
     if (monster.position === player.position) {
@@ -262,7 +130,6 @@ $(document).ready(function () {
             position++;
         }
     }
-    console.log(board);
     const renderBoard = () => {
         let boardHTML = "";
         board.forEach(row => {
@@ -273,13 +140,11 @@ $(document).ready(function () {
                     left + "px'></div>";
             });
         });
-        let square = null;
         board.forEach(row => {
             row.forEach(square => {
                 var top = square.y * 117;
                 var left = square.x * 167;
                 if (player.position === square.position) {
-                    console.log("player is on this square : ", square);
                     boardHTML += "<div class='player' style='top:" + top +
                         "px;left:" + left + "px'></div>";
                 }
